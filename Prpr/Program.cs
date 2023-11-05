@@ -1,13 +1,18 @@
 
 //using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
+using Prpr.Database;
+
 var builder = WebApplication.CreateBuilder(args);
 
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 
 try
 {
+    builder.Logging.ClearProviders();
+    builder.Host.UseNLog();
     // Add services to the container.
 
     builder.Services.AddControllers();
@@ -15,6 +20,10 @@ try
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    builder.Services.AddDbContext<Marks>(options =>
+        options.UseSqlServer(connectionString));
+    //builder.Services.AddServices();
 
     var app = builder.Build();
 
