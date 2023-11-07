@@ -18,7 +18,7 @@ namespace Prpr.Interfaces.SubjectInterfaces
         public Task<Otsenka[]> GetSubjectByGroupAsync(SubjectGroupFilter filter, CancellationToken cancellationToken = default)
         {
             
-            var subjects = _dbContext.Set < Otsenka>().Where(w => w.Student.StudentId == filter.StudentId && w.Subject.SubjectId==filter.SubjectId).ToArrayAsync(cancellationToken);
+            var subjects = _dbContext.Set <Otsenka>().Where(w => w.Subject.SubjectId==filter.SubjectId).ToArrayAsync(cancellationToken);
 
             return subjects;
 
