@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
 using Prpr.Database;
+using Prpr.Middlewares;
 //using Prpr.ServiceExtentions;
 using static Prpr.ServiceExtentions.ServiceExtentions;
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,7 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+    app.UseMiddleware<ExceptionHandlerMiddleware>();
 
     app.UseAuthorization();
 
