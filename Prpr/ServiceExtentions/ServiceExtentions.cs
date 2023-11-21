@@ -1,13 +1,13 @@
 ﻿
-using Prpr.Interfaces.SubjectInterfaces;
-using static Prpr.Interfaces.SubjectInterfaces.ISubjectService;
+using Prpr.Interfaces.StudentInterfaces;
+using static Prpr.Interfaces.StudentInterfaces.IStudentService;
 namespace Prpr.ServiceExtentions
 {
     public static class ServiceExtentions
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<IStudentService, StudentService>();
             return services;
         }
     }

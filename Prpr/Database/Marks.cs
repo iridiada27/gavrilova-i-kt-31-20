@@ -1,5 +1,4 @@
-﻿//using Prpr.Database.Configurations;
-//using Prpr.Models;
+﻿
 using Microsoft.EntityFrameworkCore;
 using Prpr.Database.Configurations;
 using Prpr.Models;
@@ -20,6 +19,6 @@ namespace Prpr.Database
             modelBuilder.ApplyConfiguration(new SubjectConfiguration());
             modelBuilder.ApplyConfiguration(new OtsenkaConfiguration());
         }
-        public Marks(DbContextOptions<Marks> options): base(options) { }
+        public Marks(DbContextOptions options): base(options) { }
     }
 }
